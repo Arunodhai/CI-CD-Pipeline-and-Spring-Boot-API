@@ -1,5 +1,5 @@
 
-# Kaiburr CI/CD Pipeline for Spring Boot API
+# Kaiburr Task 4 CI/CD Pipeline for Spring Boot API
 
 This repository contains the CI/CD pipeline configuration for building and deploying a Spring Boot API (created in Task 1) using GitHub Actions.
 
