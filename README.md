@@ -5,7 +5,7 @@ This repository contains the CI/CD pipeline configuration for building and deplo
 
 ## Workflow
 
-The CI/CD workflow consists of two jobs: `code-build` and `docker-build`. The `code-build` job builds the Spring Boot application with Maven, and the `docker-build` job builds and pushes a Docker image to Docker Hub.
+The CI/CD workflow consists of two jobs: `build` and `docker`. The `code` job builds the Spring Boot application with Maven, and the `docker` job builds and pushes a Docker image to Docker Hub.
 
 ### Build Job
 
