@@ -31,14 +31,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      - name: Set Up Docker
+        run: |
+          sudo apt-get update
+          sudo apt-get install docker.io
+          sudo service docker start
+
       - name: Login to Docker Hub
         env:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        run: >
+          echo "${DOCKER_PASSWORD}" | docker login -u "${DOCKER_USER}" --password-stdin
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag  arunodhai/kaiburrtask4:latest
+        run: docker build . --file Dockerfile --tag arunodhai/kaiburrtask4:latest
 
       - name: Docker Push
-        run: docker push $DOCKER_USER/kaiburrtask4
+        run: docker push arunodhai/kaiburrtask4
