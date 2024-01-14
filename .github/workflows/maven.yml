@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: kaiburr CI/CD Pipeline
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-push-image:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,19 +22,23 @@ jobs:
       - name: Build with Maven
         run: mvn -B clean package
 
-      - name: Set Up Docker
-        run: |
-          sudo apt-get update
-          sudo apt-get install docker.io
-          sudo service docker start
+  docker:
+    runs-on: ubuntu-latest
 
-      - name: Build Docker Image
-        run: docker build -t arunodhai/kaiburrtask4 .
+    needs: build
 
-      - name: Push Docker Image to Docker Hub
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
         env:
           DOCKER_USER: ${{ secrets.DOCKER_USER }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-        run: |
-          echo $DOCKER_PASSWORD | docker login -u $DOCKER_USER --password-stdin
-          docker push arunodhai/kaiburrtask4
+        run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag  arunodhai/kaiburrtask4:latest
+
+      - name: Docker Push
+        run: docker push $DOCKER_USER/kaiburrtask4
