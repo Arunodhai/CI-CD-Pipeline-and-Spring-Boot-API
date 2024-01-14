@@ -18,7 +18,7 @@ The CI/CD workflow consists of two jobs: `build` and `docker`. The `code` job bu
 - **Extraction of metadata (tags, labels) for Docker:** Uses the `docker/metadata-action` action to extract metadata for the Docker image.
 - **Build and push Docker image:** Uses the `docker/build-push-action` action to build and push the Docker image to Docker Hub.
 
-##My Screenshots
+## My Screenshots
 1. Pushing to github repository
 <img width="1440" alt="Screenshot 2024-01-14 at 9 01 39 PM" src="https://github.com/Arunodhai/Kaiburr-Task4/assets/60264218/9d68cead-5ae8-448d-ae0a-ab59f958faab">
 
