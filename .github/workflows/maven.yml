@@ -32,7 +32,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set Up Docker
-        uses: docker/setup-docker@v2
+        run: |
+          sudo apt-get install docker.io
+          sudo service docker start
 
       - name: Build Docker Image
         run: docker build -t arunodhai/kaiburrtask4 .
