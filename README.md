@@ -1,7 +1,7 @@
 
 # CI/CD Pipeline for Spring Boot API
 
-This repository contains the CI/CD pipeline configuration for building and deploying a Spring Boot API (created in Task 1) using GitHub Actions.
+This repository contains the CI/CD pipeline configuration for building and deploying a Spring Boot API using GitHub Actions.
 
 ## Workflow
 
